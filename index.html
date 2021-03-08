@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not to do list</title>
+    <link rel="stylesheet" href="not.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="do">
+            <h2 >Tasks</h2><br>
+            
+                <form action="">
+                    <input type="text" id="box" placeholder="Add task"style="height: 30px;" >
+                    <input type="submit" value="add" id ="add" onclick="getInputValue();" style="height: 35px; margin-left: 15px;" value="add"><br>
+                </form>
+                <div>
+                    <ul>
+                        <li>
+                            
+                        </li>
+                    </ul>
+                </div>
+     
+        </div>
+
+        <div class="not">
+            <h2>Not to Do</h2>
+
+            <ul>
+                <li class="n">
+                            
+                </li>
+            </ul>
+            <p>You saved total 15 hours this week</p>
+        </div>
+    </div>
+
+    <script>
+        const tasks=[];    
+        // Selecting the input element and get its value 
+        const getInputValue = () =>{ 
+            tasks[i]  = document.getElementById("box").value;
+            document.getElementById("box").value = "";  
+        }
+
+        const to_do = () => {
+            let display = "";
+        }
+    
+        
+    </script>
+</body>
+</html>

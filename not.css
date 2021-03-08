@@ -1,0 +1,52 @@
+body{
+    background: linear-gradient(90deg, #2edb99, #4cec37);
+}
+h2{
+    text-decoration: underline ;
+    
+}
+.wrapper {
+
+    display: grid;
+    height: 500px;
+    grid-template-columns: auto auto;
+    background: linear-gradient(90deg, #E5E5E5 50%, #C6CDCD 50%);
+}
+
+.do{
+
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto;
+}
+
+form{
+    position: absolute;
+    left: 40px;
+    top: 80px;
+    border: gray solid 1px;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.not{
+
+    display: grid;
+    justify-content: center;
+}
+
+li{
+    position: absolute;
+    left: 40px;
+    top: 150px;
+    list-style-type: none;
+
+}
+
+.n{
+    position: absolute;
+    left: 370px;
+    top: 150px;
+    list-style-type: none;
+}
+

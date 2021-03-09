@@ -50,3 +50,10 @@ li{
     list-style-type: none;
 }
 
+/* .main{
+    margin-left: 10px;
+} */
+
+#dotask li{
+    line-height: 2rem;
+}

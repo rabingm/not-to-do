@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Not to do list</title>
-    <link rel="stylesheet" href="not.css">
+    <!-- <link rel="stylesheet" href="not.css"> -->
 </head>
 <body>
     <div class="wrapper">
@@ -17,38 +17,69 @@
                 </form>
                     <div class="main">
                         <ul id="dotask"></ul> 
-                </div>
+                    </div>
         </div>
         <div class="not">
             <h2>Not to Do</h2>
-            <ul>
-                
-            </ul>
+            <ul id="notdotask"></ul>
             <p>You saved total 15 hours this week</p>
         </div>
     </div>
 
     <script>
+       
         const listItem = [];
+        const removeItem = [];
+
+        const displayMain = () => {
+        let displayItem = ""
+        listItem.forEach((item,i) => {
+        displayItem +=  `
+        <li> ${item} <button onclick = "marknot(${i})">Mark as no to do</button></li> 
+        
+        `;
+        });
+
+        const displayInList = document.getElementById("dotask")
+        displayInList.innerHTML = displayItem;
+        }
+
+        const notToDo = () => {
+        let notDisplayItem = ""
+        removeItem.forEach((item,i) => {
+        notDisplayItem +=  `
+        <li> ${item} <button onclick = "marknot(${i})">Mark as to do</button></li> 
+        
+        `;
+        });
+
+        const notDisplayInList = document.getElementById("notdotask")
+        notDisplayInList.innerHTML = notDisplayItem;
+        }
+
+
         const getInputValue = () => {
         const inputValue = document.getElementById("box").value;
         listItem.push(inputValue);
-
-        let itemToList = ""
-        listItem.forEach((item,i) => {
-        itemToList +=  `
-        <li> ${item} <button onclick = "marknot(${i})">Mark as no to do</button></li> 
         
-        `
-        });
-
-        const list = document.getElementById("dotask")
-        list.innerHTML = itemToList;
+        displayMain();
+        }
+        
+        const InvokeToDo = () =>{
+            const toRemove = listItem.splice(i, 1);
+            removeItem.push(toRemove.toString());
+            displayMain();
+            notToDo();
         }
 
-        const marknot = (i) =>{
-            console.log(i)
-        } 
+        const InvokeNotToDo = () =>{
+            const toAdd = removeItem.splice(i, 1);
+            listItem.push(toAdd.toString());
+            displayMain();
+            notToDo();
+        }
+
+        
        
     </script>
 </body>

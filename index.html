@@ -5,22 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Not to do list</title>
-    <!-- <link rel="stylesheet" href="not.css"> -->
+    <link rel="stylesheet" href="not.css">
 </head>
 <body>
     <div class="wrapper">
         <div class="do">
-            <h2 >Tasks</h2><br>
+            <h2 >DO List</h2><br>
                 <form action="" onsubmit="return false">
-                    <input type="text" id="box" placeholder="Add task"style="height: 30px;" >
-                    <input type="submit" value="add" id ="add" onclick="getInputValue();" style="height: 35px; margin-left: 15px;">
+                    <input type="text" id="enter-task" placeholder="Add task"style="height: auto;"   required>
+                    <input type="text" id="enter-time" placeholder="Allocated Hour"style="height: auto;"  required>
+                    <input type="submit" value="add" id ="add" onclick="getInputValue();" style="height: auto; margin-left: 10px;">
                 </form>
                     <div class="main">
                         <ul id="dotask"></ul> 
                     </div>
         </div>
         <div class="not">
-            <h2>Not to Do</h2>
+            <h2>Not To Do List</h2>
             <ul id="notdotask"></ul>
             <p>You saved total 15 hours this week</p>
         </div>
@@ -29,18 +30,20 @@
     <script>
        
         const listItem = [];
+        
         const removeItem = [];
 
         const displayMain = () => {
         let displayItem = ""
         listItem.forEach((item,i) => {
+            
         displayItem +=  `
-        <li> ${item} <button onclick = "marknot(${i})">Mark as no to do</button></li> 
+        <input type="checkbox">${item} <button onclick = "marknot(${i})">Mark as not to do</button><button onclick = "delItem(${i})">Delete</button>
         
         `;
         });
 
-        const displayInList = document.getElementById("dotask")
+        const displayInList = document.getElementById("dotask") 
         displayInList.innerHTML = displayItem;
         }
 
@@ -48,7 +51,7 @@
         let notDisplayItem = ""
         removeItem.forEach((item,i) => {
         notDisplayItem +=  `
-        <li> ${item} <button onclick = "marknot(${i})">Mark as to do</button></li> 
+        <input type="checkbox">${item} <button onclick = "mark(${i})">Mark as to do</button> <button onclick = "delItem1(${i})">Delete</button>
         
         `;
         });
@@ -59,24 +62,49 @@
 
 
         const getInputValue = () => {
-        const inputValue = document.getElementById("box").value;
-        listItem.push(inputValue);
+        const inputTask = document.getElementById("enter-task").value;
+        const inputDuration = document.getElementById("enter-time").value;
+
+        listItem.push(inputTask
+        //     {
+        //     // task:inputTask, 
+        //     // duration:inputDuration,
+            
+        // }
+        );
+        console.log(listItem);
         
         displayMain();
         }
         
-        const InvokeToDo = () =>{
+        const marknot = (i) =>{
             const toRemove = listItem.splice(i, 1);
             removeItem.push(toRemove.toString());
             displayMain();
             notToDo();
         }
 
-        const InvokeNotToDo = () =>{
+        const mark = (i) =>{
             const toAdd = removeItem.splice(i, 1);
             listItem.push(toAdd.toString());
             displayMain();
             notToDo();
+        }
+
+        const delItem = (i) => {
+            const del = listItem.splice(i, 1);
+
+            displayMain();
+            notToDo();
+            
+        }
+
+        const delItem1 = (i) => {
+            const del1 = removeItem.splice(i, 1);
+
+            displayMain();
+            notToDo();
+            
         }
 
         
